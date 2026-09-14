@@ -1,0 +1,11 @@
+# This repository publishes documentation and selected assets only.
+*.exe
+*.pdb
+*.log
+*.zip
+settings.json
+bin/
+obj/
+audit/
+.env
+.env.*
