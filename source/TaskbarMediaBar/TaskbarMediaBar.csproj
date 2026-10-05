@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
+    <SupportedOSPlatformVersion>10.0.22000.0</SupportedOSPlatformVersion>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <PlatformTarget>x64</PlatformTarget>
+    <Platforms>x64</Platforms>
+    <AssemblyName>TaskbarMediaBar</AssemblyName>
+    <RootNamespace>TaskbarMediaBar</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Assets\Qiyin.ico</ApplicationIcon>
+    <SatelliteResourceLanguages>zh-Hans;en</SatelliteResourceLanguages>
+    <Version>0.2.20</Version>
+    <Product>栖音 Qiyin</Product>
+    <AssemblyTitle>栖音 · 任务栏播控</AssemblyTitle>
+    <!-- 公开发布不附带调试符号或开发机器的绝对路径。 -->
+    <DebugType Condition="'$(Configuration)' == 'Release'">none</DebugType>
+    <DebugSymbols Condition="'$(Configuration)' == 'Release'">false</DebugSymbols>
+    <PathMap>$(MSBuildProjectDirectory)=/_/src/Qiyin</PathMap>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <!-- WFAC010: 我们本来就要用 manifest 声明 PerMonitorV2，不用 WinForms 的 DPI 模式 -->
+    <NoWarn>$(NoWarn);WFAC010</NoWarn>
+  </PropertyGroup>
+
+  <!-- 托盘图标要用 WinForms 的 NotifyIcon，但不要它的隐式 using：
+       否则 bare 的 Application / Timer 会和 WPF 的撞名 -->
+  <ItemGroup>
+    <Resource Include="Assets\Qiyin.ico" />
+    <Compile Remove="Tests\**\*.cs" />
+    <Using Remove="System.Windows.Forms" />
+    <Using Remove="System.Drawing" />
+  </ItemGroup>
+
+</Project>

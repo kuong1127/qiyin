@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PlatformTarget>x64</PlatformTarget>
+    <ApplicationManifest>..\..\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <!-- Reference the completed product build, without rebuilding or locking its obj directory. -->
+  <ItemGroup>
+    <Reference Include="TaskbarMediaBar">
+      <HintPath>..\..\bin\Release\net8.0-windows10.0.22621.0\TaskbarMediaBar.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
